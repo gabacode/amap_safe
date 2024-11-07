@@ -7,7 +7,7 @@
   let data: Underpass[] = [];
   let selectedTab: Underpass | null = null;
   let error: string | null = null;
-  const API_URL = import.meta.env.VITE_PROXY_API_URL || "http://localhost:4000/data";
+  const API_URL = import.meta.env.VITE_PROXY_API_URL || "https://amap.totel.dev/api/data";
 
   onMount(async () => {
     try {
