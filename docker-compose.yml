@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  frontend:
+    build:
+      context: ./frontend
+    container_name: amap_fe
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: yarn dev --host 0.0.0.0
+    environment:
+      - VITE_PROXY_API=http://amap_proxy:4000/data
+    networks:
+      - amap_network
+
+  proxy:
+    build:
+      context: ./proxy
+    container_name: amap_proxy
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./proxy:/app
+      - /app/node_modules
+    command: yarn dev
+    networks:
+      - amap_network
+
+networks:
+  amap_network:
+    driver: bridge
