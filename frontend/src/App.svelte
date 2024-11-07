@@ -7,10 +7,11 @@
   let data: Underpass[] = [];
   let selectedTab: Underpass | null = null;
   let error: string | null = null;
+  const endpoint = "http://amap_proxy:4000/data";
 
   onMount(async () => {
     try {
-      const response = await fetch("http://localhost:4000/proxy");
+      const response = await fetch(endpoint);
       if (!response.ok) {
         throw new Error("Failed to fetch data");
       }
