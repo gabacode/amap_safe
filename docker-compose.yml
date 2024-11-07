@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: yarn dev
+
+  proxy:
+    build:
+      context: ./proxy
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./proxy:/app
+      - /app/node_modules
+    command: yarn dev
