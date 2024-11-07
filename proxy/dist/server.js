@@ -18,10 +18,7 @@ const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 const PORT = 4000;
 const TARGET_URL = "https://app.amapsottopassi.it/getSottopassi.txt";
-const corsOptions = {
-    origin: "http://amap_fe:5173",
-};
-app.use((0, cors_1.default)(corsOptions));
+app.use((0, cors_1.default)());
 app.get("/data", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const response = yield (0, node_fetch_1.default)(TARGET_URL);

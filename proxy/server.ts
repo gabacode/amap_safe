@@ -6,11 +6,7 @@ const app = express();
 const PORT = 4000;
 const TARGET_URL = "https://app.amapsottopassi.it/getSottopassi.txt";
 
-const corsOptions = {
-  origin: "http://amap_fe:5173",
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.get("/data", async (req, res) => {
   try {

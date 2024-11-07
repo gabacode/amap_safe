@@ -7,11 +7,11 @@
   let data: Underpass[] = [];
   let selectedTab: Underpass | null = null;
   let error: string | null = null;
-  const endpoint = "http://amap_proxy:4000/data";
+  const API_URL = import.meta.env.VITE_PROXY_API_URL || "http://localhost:4000/data";
 
   onMount(async () => {
     try {
-      const response = await fetch(endpoint);
+      const response = await fetch(API_URL);
       if (!response.ok) {
         throw new Error("Failed to fetch data");
       }

@@ -9,7 +9,9 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
-    command: yarn dev
+    command: yarn dev --host 0.0.0.0
+    environment:
+      - VITE_PROXY_API=http://amap_proxy:4000/data
     networks:
       - amap_network
 
